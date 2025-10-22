@@ -1,56 +1,68 @@
 let cookies = 0;
-let perClick = 1;
-let perSecond = 0;
+let cps = 0;
 let cursors = 0;
-let grandmas = 0;
 
-// Élément HTML
 const elCookies = document.getElementById("cookies");
-const elPerClick = document.getElementById("perClick");
-const elPerSecond = document.getElementById("perSecond");
-const elCookie = document.getElementById("cookie");
-const elCursorCount = document.getElementById("cursorCount");
-const elGrandmaCount = document.getElementById("grandmaCount");
+const elCps = document.getElementById("cps");
+const cookie = document.getElementById("cookie");
+const buyCursor = document.getElementById("buyCursor");
+const shopStatus = document.getElementById("shopStatus");
 
-// Mettre à jour l'affichage
-function render() {
-  elCookies.textContent = Math.floor(cookies);
-  elPerClick.textContent = perClick;
-  elPerSecond.textContent = perSecond.toFixed(1);
-  elCursorCount.textContent = cursors;
-  elGrandmaCount.textContent = grandmas;
+// Effet sonore de clic
+const clickSound = new Audio('click-sound.mp3');  // Assurez-vous d'avoir ce fichier
+
+// Charger sauvegarde
+if (localStorage.getItem("cookies")) {
+  cookies = parseInt(localStorage.getItem("cookies"));
+  cursors = parseInt(localStorage.getItem("cursors") || 0);
+  cps = parseFloat(localStorage.getItem("cps") || 0);
+  updateStats();
 }
 
-// Fonction de clic sur le cookie
-elCookie.addEventListener("click", () => {
-  cookies += perClick;
-  render();
+// Mise à jour des statistiques
+function updateStats() {
+  elCookies.textContent = Math.floor(cookies);
+  elCps.textContent = cps.toFixed(1);
+  shopStatus.textContent = `${cursors} curseur(s) acheté(s)`;
+}
+
+// Gestion du clic sur le cookie
+cookie.addEventListener("click", () => {
+  cookies++;
+  clickSound.play();
+  cookies += cursors * 0.1;  // Gain automatique par curseur
+  updateStats();
+  saveData();
+
+  // Animation du cookie
+  cookie.style.transform = 'scale(1.2)';
+  setTimeout(() => {
+    cookie.style.transform = 'scale(1)';
+  }, 100);
 });
 
-// Acheter un curseur
-document.getElementById("buyCursor").addEventListener("click", () => {
-  if (cookies >= 15) {
-    cookies -= 15;
+// Achat du curseur
+buyCursor.addEventListener("click", () => {
+  const price = 15;
+  if (cookies >= price) {
+    cookies -= price;
     cursors++;
-    perSecond += 0.1; // Chaque curseur produit 0.1 cookie par seconde
-    render();
+    cps += 0.1;  // Chaque curseur ajoute 0.1 cookies/s
+    updateStats();
+    saveData();
   }
 });
 
-// Acheter une mamie
-document.getElementById("buyGrandma").addEventListener("click", () => {
-  if (cookies >= 100) {
-    cookies -= 100;
-    grandmas++;
-    perSecond += 1; // Chaque mamie produit 1 cookie par seconde
-    render();
-  }
-});
+// Sauvegarde automatique
+function saveData() {
+  localStorage.setItem("cookies", cookies);
+  localStorage.setItem("cursors", cursors);
+  localStorage.setItem("cps", cps);
+}
 
-// Production automatique (toutes les secondes)
+// Production automatique (par secondes)
 setInterval(() => {
-  cookies += perSecond;
-  render();
+  cookies += cps / 10;
+  updateStats();
+  saveData();
 }, 1000);
-
-render(); // Initialiser l'affichage

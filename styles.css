@@ -1,67 +1,49 @@
-/* Général */
 body {
-    font-family: Arial, sans-serif;
-    background: #282c34;
-    color: #fff;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-  }
-  
-  /* En-tête */
-  header {
-    background: #222;
-    padding: 10px;
-  }
-  
-  header h1 {
-    font-size: 2rem;
-  }
-  
-  /* Bouton Cookie */
-  .cookie {
-    width: 200px;
-    height: 200px;
-    margin: 50px auto;
-    border-radius: 50%;
-    background: radial-gradient(circle, #c07a28, #7a4e1f);
-    cursor: pointer;
-    box-shadow: 0 0 20px #000 inset;
-  }
-  
-  /* Stats */
-  .stats {
-    margin: 20px;
-  }
-  
-  .stats p {
-    font-size: 1.2rem;
-  }
-  
-  /* Section Boutique */
-  #shop {
-    margin-top: 30px;
-  }
-  
-  .item {
-    margin: 10px 0;
-    background: #333;
-    padding: 10px;
-    border-radius: 8px;
-  }
-  
-  button {
-    background: #6c4e2f;
-    border: none;
-    padding: 10px 20px;
-    margin-top: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    color: white;
-    font-size: 1rem;
-  }
-  
-  button:hover {
-    background: #8e6020;
-  }
-  
+  background: #151515;
+  color: white;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+header {
+  background: #222;
+  padding: 10px;
+}
+
+#cookie {
+  margin: 100px auto;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #c07a28, #7a4e1f);
+  cursor: pointer;
+  box-shadow: 0 0 20px #000 inset;
+  transition: transform 0.1s ease-in-out;
+}
+
+#cookie:hover {
+  transform: scale(1.1);
+}
+
+.shop {
+  margin-top: 40px;
+}
+
+button {
+  padding: 15px 30px;
+  background-color: #8e4b1f;
+  color: white;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+button:disabled {
+  background-color: #444;
+}
+
+#shopStatus {
+  margin-top: 15px;
+  color: #7a9a4d;
+}

@@ -2,35 +2,27 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>V4 — Boutique d'Améliorations</title>
+  <title>Cookie Clicker — Version Finale</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header>
-    <h1>🍪 Cookie Clicker V4</h1>
+    <h1>🍪 Cookie Clicker</h1>
     <div class="stats">
       <p>Cookies : <span id="cookies">0</span></p>
-      <p>Cookies par clic : <span id="perClick">1</span></p>
-      <p>Cookies par seconde : <span id="perSecond">0</span></p>
+      <p>Cookies/s : <span id="cps">0</span></p>
     </div>
   </header>
-  
   <main>
-    <div id="cookie" class="cookie"></div>
+    <div id="cookie"></div>
 
-    <h2>Boutique d'Améliorations</h2>
-    <div id="shop">
-      <div class="item">
-        <p>Curseur (coût: 15 cookies) : <span id="cursorCount">0</span></p>
-        <button id="buyCursor">Acheter un curseur</button>
-      </div>
-      <div class="item">
-        <p>Mamie (coût: 100 cookies) : <span id="grandmaCount">0</span></p>
-        <button id="buyGrandma">Acheter une mamie</button>
-      </div>
-    </div>
+    <section class="shop">
+      <h2>Boutique</h2>
+      <button id="buyCursor">Acheter un curseur (15 cookies)</button>
+      <div id="shopStatus">Aucun curseur acheté</div>
+    </section>
   </main>
-  
+
   <script src="main.js"></script>
 </body>
 </html>
