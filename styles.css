@@ -12,4 +12,6 @@ background: radial-gradient(circle at 60% 50%, #c8873b,#b3722d 60%,#7a4e1f);
 box-shadow: inset -8px -10px 18px rgba(0,0,0,.35),0 12px 30px rgba(0,0,0,.45);
 cursor:pointer;transition:transform .08s ease;
 }
-.cookie:active{transform:scale(.96)}
+button{padding:10px 14px;border:0;border-radius:10px;background:#232633;color:#fff;cursor:pointer}
+
+

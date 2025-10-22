@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>V2 — Interface</title>
+<title>V3 — Sauvegarde</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <header>
-<h1>🍪 V2 — Interface</h1>
+<h1>🍪 V3 — Sauvegarde</h1>
 <div class="pill">Cookies: <strong id="cookieCount">0</strong></div>
 <div class="pill">Par clic: <strong id="perClick">1</strong></div>
 <div class="pill">Par seconde: <strong id="perSecond">0</strong></div>
@@ -16,14 +16,12 @@
 
 <main>
 <section class="panel center">
-<div class="cookie" id="cookie" tabindex="0" aria-label="cookie"></div>
+<div class="cookie" id="cookie"></div>
 </section>
 <section class="panel">
-<h2>Stats</h2>
-<ul>
-<li>Total produit: <strong id="totalBaked">0</strong></li>
-<li>Achats: <strong id="totalBuys">0</strong></li>
-</ul>
+<h2>Contrôles</h2>
+<button id="saveBtn">💾 Sauver</button>
+<button id="resetBtn">♻️ Réinitialiser</button>
 </section>
 </main>
 
