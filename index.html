@@ -1,16 +1,32 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>V1 — Compteur de clics</title>
-  <link rel="stylesheet" href="styles.css">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>V2 — Interface</title>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <main>
-    <h1>🍪 Cookie Clicker V1</h1>
-    <p>Cookies : <span id="count">0</span></p>
-    <button id="cookie">Cliquer</button>
-  </main>
-  <script src="main.js"></script>
+<header>
+<h1>🍪 V2 — Interface</h1>
+<div class="pill">Cookies: <strong id="cookieCount">0</strong></div>
+<div class="pill">Par clic: <strong id="perClick">1</strong></div>
+<div class="pill">Par seconde: <strong id="perSecond">0</strong></div>
+</header>
+
+<main>
+<section class="panel center">
+<div class="cookie" id="cookie" tabindex="0" aria-label="cookie"></div>
+</section>
+<section class="panel">
+<h2>Stats</h2>
+<ul>
+<li>Total produit: <strong id="totalBaked">0</strong></li>
+<li>Achats: <strong id="totalBuys">0</strong></li>
+</ul>
+</section>
+</main>
+
+<script src="main.js"></script>
 </body>
 </html>
