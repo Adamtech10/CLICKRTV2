@@ -1,36 +1,56 @@
-const KEY = 'clickrt_save_v3';
-const el = id => document.getElementById(id);
+let cookies = 0;
+let perClick = 1;
+let perSecond = 0;
+let cursors = 0;
+let grandmas = 0;
 
-const state = { cookies:0, perClick:1, perSecond:0 };
+// Élément HTML
+const elCookies = document.getElementById("cookies");
+const elPerClick = document.getElementById("perClick");
+const elPerSecond = document.getElementById("perSecond");
+const elCookie = document.getElementById("cookie");
+const elCursorCount = document.getElementById("cursorCount");
+const elGrandmaCount = document.getElementById("grandmaCount");
 
-function save(){ localStorage.setItem(KEY, JSON.stringify(state)); }
-function load(){
-const raw = localStorage.getItem(KEY);
-if(raw){ Object.assign(state, JSON.parse(raw)); }
+// Mettre à jour l'affichage
+function render() {
+  elCookies.textContent = Math.floor(cookies);
+  elPerClick.textContent = perClick;
+  elPerSecond.textContent = perSecond.toFixed(1);
+  elCursorCount.textContent = cursors;
+  elGrandmaCount.textContent = grandmas;
 }
 
-function render(){
-el('cookieCount').textContent = Math.floor(state.cookies);
-el('perClick').textContent = state.perClick;
-el('perSecond').textContent = state.perSecond.toFixed(1);
-}
-
-el('cookie').addEventListener('click', () => {
-state.cookies += state.perClick;
-save(); render();
+// Fonction de clic sur le cookie
+elCookie.addEventListener("click", () => {
+  cookies += perClick;
+  render();
 });
 
-el('saveBtn').addEventListener('click', save);
-el('resetBtn').addEventListener('click', () => {
-localStorage.removeItem(KEY);
-state.cookies = 0; render();
+// Acheter un curseur
+document.getElementById("buyCursor").addEventListener("click", () => {
+  if (cookies >= 15) {
+    cookies -= 15;
+    cursors++;
+    perSecond += 0.1; // Chaque curseur produit 0.1 cookie par seconde
+    render();
+  }
 });
 
+// Acheter une mamie
+document.getElementById("buyGrandma").addEventListener("click", () => {
+  if (cookies >= 100) {
+    cookies -= 100;
+    grandmas++;
+    perSecond += 1; // Chaque mamie produit 1 cookie par seconde
+    render();
+  }
+});
+
+// Production automatique (toutes les secondes)
 setInterval(() => {
-state.cookies += state.perSecond/10;
-render();
-}, 100);
+  cookies += perSecond;
+  render();
+}, 1000);
 
-load(); render();
-
-
+render(); // Initialiser l'affichage

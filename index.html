@@ -1,30 +1,36 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>V3 — Sauvegarde</title>
-<link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <title>V4 — Boutique d'Améliorations</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header>
-<h1>🍪 V3 — Sauvegarde</h1>
-<div class="pill">Cookies: <strong id="cookieCount">0</strong></div>
-<div class="pill">Par clic: <strong id="perClick">1</strong></div>
-<div class="pill">Par seconde: <strong id="perSecond">0</strong></div>
-</header>
+  <header>
+    <h1>🍪 Cookie Clicker V4</h1>
+    <div class="stats">
+      <p>Cookies : <span id="cookies">0</span></p>
+      <p>Cookies par clic : <span id="perClick">1</span></p>
+      <p>Cookies par seconde : <span id="perSecond">0</span></p>
+    </div>
+  </header>
+  
+  <main>
+    <div id="cookie" class="cookie"></div>
 
-<main>
-<section class="panel center">
-<div class="cookie" id="cookie"></div>
-</section>
-<section class="panel">
-<h2>Contrôles</h2>
-<button id="saveBtn">💾 Sauver</button>
-<button id="resetBtn">♻️ Réinitialiser</button>
-</section>
-</main>
-
-<script src="main.js"></script>
+    <h2>Boutique d'Améliorations</h2>
+    <div id="shop">
+      <div class="item">
+        <p>Curseur (coût: 15 cookies) : <span id="cursorCount">0</span></p>
+        <button id="buyCursor">Acheter un curseur</button>
+      </div>
+      <div class="item">
+        <p>Mamie (coût: 100 cookies) : <span id="grandmaCount">0</span></p>
+        <button id="buyGrandma">Acheter une mamie</button>
+      </div>
+    </div>
+  </main>
+  
+  <script src="main.js"></script>
 </body>
 </html>
